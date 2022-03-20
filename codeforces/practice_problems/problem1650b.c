@@ -1,18 +1,18 @@
-//exceeds time limit
-//TODO: make this pass the time limit
+//read the editorial, still didn't understand the problem, but this should be the solution
+//TODO: truly understand the editorial
 
 #include <stdio.h>
-#include <math.h>
+
+#define MAX(X, Y) (((X)>(Y)) ? (X) : (Y))
 
 long find_max(long lower, long higher, long a) {
-    long x;
-    long maximum = 1;
-    long val;
 
-    for (x = lower; x <= higher; x++ ){
-        val = floor(x / a) + x % a;
-        if (val > maximum) maximum = val;
-    }
+    //number with the biggest mod thats in range
+    long x =  MAX(lower, higher - 1 );
+
+    //maximum between doing the function with the biggest number, and number with biggest mod in range
+    long maximum = MAX( higher/a + higher % a, x / a + x % a);
+
 
     return maximum;
 }
